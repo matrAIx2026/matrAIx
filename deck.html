@@ -122,6 +122,15 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
 .advisor .logos{justify-content:flex-start}
 @media (max-width:780px){.tam{width:min(340px,86vw)} .team-grid{gap:20px} .advisor{flex-direction:column;text-align:center} .advisor .info{text-align:center} .advisor .logos{justify-content:center}}
 
+/* use of funds */
+.fund{display:flex;flex-direction:column;gap:18px;margin-top:30px}
+.fund-row .ft{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:1.05rem;margin-bottom:8px}
+.fund-row .nm{color:var(--ink)} .fund-row .nm small{display:block;color:var(--ink-dim);font-size:.72rem;margin-top:2px}
+.fund-row .am{font-family:var(--disp);font-weight:800;color:var(--phos);font-variant-numeric:tabular-nums;white-space:nowrap}
+.fund-row .am b{color:var(--ink-dim);font-weight:400;font-size:.74rem;margin-left:8px}
+.fund-track{height:9px;background:var(--line-soft)}
+.fund-fill{height:100%;background:linear-gradient(90deg,var(--phos-deep),var(--phos));box-shadow:var(--glow)}
+
 .progress{position:fixed;top:0;left:0;height:2px;background:var(--phos);box-shadow:var(--glow);z-index:6;transition:width .4s ease}
 .hud{position:fixed;bottom:20px;left:0;right:0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,40px);pointer-events:none}
 .brandmini{font-family:var(--disp);font-weight:800;font-size:.95rem;color:var(--ink-dim);pointer-events:auto}
@@ -419,10 +428,37 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
     </div>
   </section>
 
-  <!-- 15 · ASK -->
+  <!-- 15 · USE OF FUNDS -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="tick">//</span> <span class="n">15</span> &nbsp;USE OF FUNDS</div>
+      <h2>Use of funds — <span class="hl">$5M seed</span>.</h2>
+      <div class="fund">
+        <div class="fund-row">
+          <div class="ft"><span class="nm">Team — full-time hires &amp; onboarding<small>engineering, research, GTM</small></span><span class="am">$2.2M <b>44%</b></span></div>
+          <div class="fund-track"><div class="fund-fill" style="width:44%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="ft"><span class="nm">Compute — 8× H200 GPU rental<small>agent simulation &amp; inference, ~18-mo runway + burst</small></span><span class="am">$1.6M <b>32%</b></span></div>
+          <div class="fund-track"><div class="fund-fill" style="width:32%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="ft"><span class="nm">Customer discovery<small>design partners &amp; pilots</small></span><span class="am">$0.7M <b>14%</b></span></div>
+          <div class="fund-track"><div class="fund-fill" style="width:14%"></div></div>
+        </div>
+        <div class="fund-row">
+          <div class="ft"><span class="nm">Buyer-intent &amp; GTM<small>pipeline to data &amp; eval buyers</small></span><span class="am">$0.5M <b>10%</b></span></div>
+          <div class="fund-track"><div class="fund-fill" style="width:10%"></div></div>
+        </div>
+      </div>
+      <p class="note">~18-month runway to revenue milestones.</p>
+    </div>
+  </section>
+
+  <!-- 16 · ASK -->
   <section class="slide">
     <div class="inner cover">
-      <div class="eyebrow" style="justify-content:center"><span class="tick">//</span> <span class="n">15</span> &nbsp;THE ASK</div>
+      <div class="eyebrow" style="justify-content:center"><span class="tick">//</span> <span class="n">16</span> &nbsp;THE ASK</div>
       <h1>Evaluate agents <span class="hl">before</span> the world does.</h1>
       <p class="lead" style="margin:22px auto 0;text-align:center">Raising <strong>$5M seed</strong> to scale the portal, expand to 1,000 dimensions, and convert design partners.</p>
       <div class="meta" style="margin-top:38px"><span>Request a demo →</span><span><b>info@matraix.ai</b></span><span>matraix.ai</span></div>
