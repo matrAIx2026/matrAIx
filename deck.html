@@ -69,6 +69,13 @@ ul.points li span{color:var(--ink-dim)}
 .card h3{font-family:var(--disp);font-weight:700;font-size:1.4rem;margin:10px 0 8px}
 .card p{color:var(--ink-dim);font-size:1rem;line-height:1.45}
 .card .price{display:block;margin-top:12px;color:var(--phos);font-size:.92rem;font-weight:700}
+.rev-rail{display:flex;gap:18px;margin-top:14px}
+.rev-seg{border:1px solid var(--line);border-top:2px solid var(--phos);background:rgba(84,246,166,.05);padding:14px 18px;display:flex;flex-direction:column;gap:5px}
+.rev-seg.one{flex:1} .rev-seg.two{flex:2}
+.rs-name{font-family:var(--disp);font-weight:700;color:var(--ink);font-size:1.05rem}
+.rs-sub{color:var(--ink-dim);font-size:.82rem}
+.rs-arr{font-family:var(--disp);font-weight:800;color:var(--phos);font-size:1.3rem;margin-top:2px}
+.rs-arr em{color:var(--ink-dim);font-style:normal;font-weight:400;font-size:.74rem;letter-spacing:.02em}
 
 .stats3{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:30px}
 .stats3>div{padding:26px 22px;border-right:1px solid var(--line-soft);text-align:center}
@@ -183,6 +190,7 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
   .cols.c3,.cols.c2,.stats3{grid-template-columns:1fr}
   .stats3>div{border-right:none;border-bottom:1px solid var(--line-soft)}
   .split{grid-template-columns:1fr;gap:22px} .hint{display:none}
+  .rev-rail{flex-direction:column} .rev-seg.one,.rev-seg.two{flex:none}
 }
 @media (prefers-reduced-motion:reduce){.slide{transition:opacity .2s}}
 </style>
@@ -233,15 +241,19 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
     </div>
   </section>
 
-  <!-- 3 · WHAT YOU GET -->
+  <!-- 3 · PRODUCTS & REVENUE -->
   <section class="slide">
     <div class="inner">
-      <div class="eyebrow"><span class="tick">//</span> <span class="n">03</span> &nbsp;WHAT YOU GET</div>
-      <h2>Three products from <span class="hl">8.3B Virtual Agents.</span></h2>
+      <div class="eyebrow"><span class="tick">//</span> <span class="n">03</span> &nbsp;PRODUCTS &amp; REVENUE</div>
+      <h2>Three products, <span class="hl">two revenue lines.</span></h2>
       <div class="cols c3">
         <div class="card"><div class="k">01</div><h3>Evaluation reports</h3><p>Segmented A/B verdicts by persona — the friction that aggregate metrics hide.</p></div>
         <div class="card"><div class="k">02</div><h3>Simulated User Data</h3><p>Persona-tagged simulated user trajectory for analysis and training.</p></div>
         <div class="card"><div class="k">03</div><h3>Simulation Playground</h3><p>Interactive environments for running user simulations with persona-driven agents.</p></div>
+      </div>
+      <div class="rev-rail">
+        <div class="rev-seg one"><span class="rs-name">Eval-as-a-Service</span><span class="rs-sub">① subscription &amp; enterprise suites</span><span class="rs-arr">~$30M <em>est. ARR · 3-yr target</em></span></div>
+        <div class="rev-seg two"><span class="rs-name">Data &amp; Playground</span><span class="rs-sub">②③ data licensing &amp; self-serve usage</span><span class="rs-arr">~$20M <em>est. ARR · 3-yr target</em></span></div>
       </div>
     </div>
   </section>
@@ -263,22 +275,10 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
     </div>
   </section>
 
-  <!-- 10 · BUSINESS MODEL -->
-  <section class="slide">
-    <div class="inner">
-      <div class="eyebrow"><span class="tick">//</span> <span class="n">05</span> &nbsp;BUSINESS MODEL</div>
-      <h2>One engine, two revenue lines.</h2>
-      <div class="cols c2">
-        <div class="card"><div class="k">01</div><h3>Eval-as-a-Service</h3><p>Run evaluations on your apps, agents &amp; models.<span class="price">From $2.5K / mo</span></p></div>
-        <div class="card"><div class="k">02</div><h3>Enterprise</h3><p>On-prem, custom dimensions, bespoke suites.<span class="price">From $250K / yr</span></p></div>
-      </div>
-    </div>
-  </section>
-
   <!-- 6 · COMPETITION -->
   <section class="slide">
     <div class="inner">
-      <div class="eyebrow"><span class="tick">//</span> <span class="n">06</span> &nbsp;WHY WE WIN</div>
+      <div class="eyebrow"><span class="tick">//</span> <span class="n">05</span> &nbsp;WHY WE WIN</div>
       <h2>Population-scale. Dual-output. Reproducible.</h2>
       <table class="t">
         <thead><tr><th>Approach</th><th>Persona breadth</th><th>Training data</th><th>Scale</th></tr></thead>
@@ -295,7 +295,7 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
   <!-- 8 · TEAM & ADVISOR -->
   <section class="slide">
     <div class="inner">
-      <div class="eyebrow"><span class="tick">//</span> <span class="n">07</span> &nbsp;TEAM</div>
+      <div class="eyebrow"><span class="tick">//</span> <span class="n">06</span> &nbsp;TEAM</div>
       <h2>Team.</h2>
       <div class="team-grid">
         <div class="founder">
@@ -335,7 +335,7 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
   <!-- 10 · ASK -->
   <section class="slide">
     <div class="inner cover">
-      <div class="eyebrow" style="justify-content:center"><span class="tick">//</span> <span class="n">08</span> &nbsp;THE ASK</div>
+      <div class="eyebrow" style="justify-content:center"><span class="tick">//</span> <span class="n">07</span> &nbsp;THE ASK</div>
       <h1 class="ask-h"><span>Continuous product optimization</span><span>through <span class="hl">simulation</span>.</span></h1>
       <div class="ask-globes" aria-hidden="true">
         <div class="ag-wrap human"><canvas class="dglobe" data-kind="human"></canvas><span class="ag-cap">Earth</span></div>
