@@ -151,6 +151,21 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
 .fund-track{height:9px;background:var(--line-soft)}
 .fund-fill{height:100%;background:linear-gradient(90deg,var(--phos-deep),var(--phos));box-shadow:var(--glow)}
 
+/* ask slide — 2-row headline + twin globes */
+.ask-h{font-size:clamp(2rem,5vw,4rem)} .ask-h span{display:block}
+.ask-globes{display:flex;align-items:center;justify-content:center;gap:20px;margin:28px 0 6px}
+.ag-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.dglobe{width:96px;height:96px;display:block}
+.ag-cap{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim)}
+.ag-wrap.human .ag-cap{color:var(--cyan)}
+.ag-wrap.agent .ag-cap{color:var(--phos);text-shadow:var(--glow)}
+.ag-link{font-size:1.3rem;color:var(--ink-dim)}
+/* research appendix papers */
+.paper h3{font-size:1.16rem;line-height:1.22;margin:9px 0 7px}
+.paper p{font-size:.85rem;line-height:1.4;color:var(--ink-dim)}
+.paper p b{color:var(--ink);font-weight:600}
+.paper .k{color:var(--amber)}
+
 .progress{position:fixed;top:0;left:0;height:2px;background:var(--phos);box-shadow:var(--glow);z-index:6;transition:width .4s ease}
 .hud{position:fixed;bottom:20px;left:0;right:0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,40px);pointer-events:none}
 .brandmini{font-family:var(--disp);font-weight:800;font-size:.95rem;color:var(--ink-dim);pointer-events:auto;display:inline-flex;align-items:center;gap:.28em}
@@ -321,9 +336,14 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
   <section class="slide">
     <div class="inner cover">
       <div class="eyebrow" style="justify-content:center"><span class="tick">//</span> <span class="n">08</span> &nbsp;THE ASK</div>
-      <h1>Continuous product optimization<br>through <span class="hl">simulation</span>.</h1>
-      <p class="lead" style="margin:22px auto 0;text-align:center">Raising <strong>$5M seed</strong> to scale the portal, expand to 1,000 dimensions, and convert design partners.</p>
-      <div class="meta" style="margin-top:38px"><span>Request a demo →</span><span><b>info@matraix.ai</b></span><span>matraix.ai</span></div>
+      <h1 class="ask-h"><span>Continuous product optimization</span><span>through <span class="hl">simulation</span>.</span></h1>
+      <div class="ask-globes" aria-hidden="true">
+        <div class="ag-wrap human"><canvas class="dglobe" data-kind="human"></canvas><span class="ag-cap">Earth</span></div>
+        <span class="ag-link">≈</span>
+        <div class="ag-wrap agent"><canvas class="dglobe" data-kind="agent"></canvas><span class="ag-cap">matrAIx</span></div>
+      </div>
+      <p class="lead" style="margin:14px auto 0;text-align:center">Raising <strong>$5M seed</strong> to scale the portal, expand to 1,000 dimensions, and convert design partners.</p>
+      <div class="meta" style="margin-top:30px"><span>Request a demo →</span><span><b>info@matraix.ai</b></span><span>matraix.ai</span></div>
     </div>
   </section>
 
@@ -367,6 +387,20 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
           <div class="ft"><span class="nm">Buyer-intent &amp; GTM<small>pipeline to data &amp; eval buyers</small></span><span class="am">$0.5M <b>10%</b></span></div>
           <div class="fund-track"><div class="fund-fill" style="width:10%"></div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPENDIX · RESEARCH (shown only on request) -->
+  <section class="slide">
+    <div class="inner">
+      <div class="eyebrow"><span class="tick">//</span> <span class="n" style="color:var(--amber)">APPENDIX</span> &nbsp;04 — RESEARCH</div>
+      <h2>Built on <span class="hl">peer-reviewed</span> research.</h2>
+      <div class="cols c2">
+        <div class="card paper"><div class="k">AAAI 2026</div><h3>Rule-based Rating and Selection of LLM Data</h3><p><b>Xiaomin Li</b>, Mingye Gao, Zhiwei Zhang, Chang Yue, Hong Hu</p></div>
+        <div class="card paper"><div class="k">NeurIPS 2025 · GenAI4Health</div><h3>MedGUIDE: Benchmarking Clinical Decision-Making in LLMs</h3><p><b>Xiaomin Li</b>, Mingye Gao, <b>Yuexing Hao</b>, Taoran Li, Guangya Wan, Zihan Wang, Yijun Wang</p></div>
+        <div class="card paper"><div class="k">ICML 2026 · FAGEN</div><h3>Automating SKILL.md Generation for Computer-Using Agents</h3><p><b>Yuexing Hao</b>, <b>Xiaomin Li</b></p></div>
+        <div class="card paper"><div class="k">ICML 2026</div><h3>NARRA-Gym for Evaluating Interactive Narrative Agents</h3><p>Yue Huang, Yuchen Ma, Jiayi Ye, … <b>Yuexing Hao</b> … Stefan Feuerriegel, Xiangliang Zhang</p></div>
       </div>
     </div>
   </section>
@@ -431,6 +465,34 @@ table.t td.y{color:var(--phos);font-weight:700} table.t td.n{color:var(--ink-dim
   }
   progress.style.width=(1/n*100)+'%';
   countUp();
+})();
+
+/* twin globes on the ASK slide — Earth ≈ matrAIx (fibonacci point cloud) */
+(function(){
+  var globes=[].slice.call(document.querySelectorAll('.dglobe'));
+  if(!globes.length) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N=420, PTS=[], ga=Math.PI*(3-Math.sqrt(5));
+  for(var i=0;i<N;i++){var y=1-(i/(N-1))*2, r=Math.sqrt(1-y*y), t=ga*i; PTS.push([Math.cos(t)*r,y,Math.sin(t)*r]);}
+  globes.forEach(function(canvas){
+    var ctx=canvas.getContext('2d');
+    var isAgent=canvas.dataset.kind==='agent';
+    var col=isAgent?'84,246,166':'138,208,255';
+    var w,h,cx,cy,R,dpr,rot=Math.random()*6;
+    function resize(){var rect=canvas.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);w=rect.width;h=rect.height;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);cx=w/2;cy=h/2;R=Math.min(w,h)*0.42;}
+    function step(){
+      ctx.clearRect(0,0,w,h);
+      if(isAgent){var g=ctx.createRadialGradient(cx,cy,R*0.2,cx,cy,R*1.15);g.addColorStop(0,'rgba(84,246,166,0.12)');g.addColorStop(1,'rgba(84,246,166,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.15,0,6.283);ctx.fill();}
+      ctx.strokeStyle='rgba('+col+',0.16)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
+      var ca=Math.cos(rot),sa=Math.sin(rot),proj=[];
+      for(var i=0;i<N;i++){var p=PTS[i],x=p[0]*ca-p[2]*sa,z=p[0]*sa+p[2]*ca;proj.push([cx+x*R,cy+p[1]*R,z]);}
+      proj.sort(function(a,b){return a[2]-b[2];});
+      for(var j=0;j<proj.length;j++){var q=proj[j],f=(q[2]+1)/2;ctx.fillStyle='rgba('+col+','+(0.12+f*0.85).toFixed(3)+')';ctx.beginPath();ctx.arc(q[0],q[1],(0.7+f*1.5)*(isAgent?1.12:1),0,6.283);ctx.fill();}
+    }
+    function loop(){step();rot+=isAgent?0.0045:0.0038;requestAnimationFrame(loop);}
+    resize();window.addEventListener('resize',resize);
+    if(reduce)step();else loop();
+  });
 })();
 </script>
 </body>
